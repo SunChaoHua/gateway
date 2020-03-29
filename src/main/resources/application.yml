@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: true #设置服务注册与发现组件结合
+  profiles:
+    active: test
+
+server:
+  port: 8001
+eureka:
+  instance:
+    prefer-ip-address: true   #注册服务时使用服务的IP进行注册
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

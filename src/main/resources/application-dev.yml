@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: test_router
+          uri: lb://SPRING-CLOUD-SERVICE-DB:8002 #整合 eureka需以 lb(load balance)://XXX进行访问，否则会找不到服务
+          predicates:
+#            - Header=X-Request-Id, \d+    #匹配请求头中带有 X-Request-Id且匹配 \d+ 正则表达式的字段
+            - Method=Get
+

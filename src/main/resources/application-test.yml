@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: test_router
+          uri: lb://SPRING-CLOUD-SERVICE-DB:8002 #整合 eureka需以 lb(load balance)://XXX进行访问，否则会找不到服务
+          predicates:
+            - Path=/test/**
+          filters:
+            - StripPrefix=1
+            - DbService
+
